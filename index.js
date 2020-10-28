@@ -1,11 +1,9 @@
-import React, { Component } from 'react';
-import { View, Text, } from 'react-native';
-export default class SliderScreen extends Component {
-  render() {
-    return (
-      <View>
-        <Text>Danang Keren</Text>
-      </View>
-    )
-  }
-}
+import { Platform } from "react-native";
+import LinearGradientIos from "./index.ios.js";
+import LinearGradientAndroid from "./index.android.js";
+
+const Gradient = Platform.OS === "ios"
+  ? LinearGradientIos
+  : LinearGradientAndroid;
+
+export default Gradient;
