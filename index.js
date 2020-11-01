@@ -1,9 +1,11 @@
-import { Platform } from "react-native";
-import LinearGradientIos from "./index.ios.js";
-import LinearGradientAndroid from "./index.android.js";
+/* eslint-disable prettier/prettier */
+import Gradient from './gradient';
+import Header from './header';
+import Footer from './footer';
+import Centers from './centers';
+import Rights from './rights';
+import Rows from './rows';
+import Container from './container';
+import Wrap from './wrap';
 
-const Gradient = Platform.OS === "ios"
-  ? LinearGradientIos
-  : LinearGradientAndroid;
-
-export default Gradient;
+export { Gradient, Header, Footer, Centers, Rights, Rows, Container, Wrap };
