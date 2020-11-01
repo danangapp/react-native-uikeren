@@ -7,5 +7,7 @@ import Rights from './rights';
 import Rows from './rows';
 import Container from './container';
 import Wrap from './wrap';
+import Card from './card';
+import Divider from './divider';
 
-export { Gradient, Header, Footer, Centers, Rights, Rows, Container, Wrap };
+export { Gradient, Header, Footer, Centers, Rights, Rows, Container, Wrap, Card, Divider };

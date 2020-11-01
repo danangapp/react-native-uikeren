@@ -3,18 +3,20 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 
-class Rows extends Component {
+class Container extends Component {
   render() {
+    const { style, ...rest } = this.props;
     return (
-      <View style={s.container} {...this.props} />
+      <View style={[s.container, style]} {...rest} />
     );
   }
 }
 
-export default Rows;
+export default Container;
 
 var s = StyleSheet.create({
   container: {
-    flexDirection: 'row',
+    flex: 1,
+    padding: 10,
   },
 });

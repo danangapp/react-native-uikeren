@@ -3,18 +3,20 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 
-class Rows extends Component {
+class Divider extends Component {
   render() {
+    const { color } = this.props;
     return (
-      <View style={s.container} {...this.props} />
+      <View style={[s.divider, { backgroundColor: color || 'black' }]} />
     );
   }
 }
 
-export default Rows;
+export default Divider;
 
 var s = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
+  divider: {
+    height: 2,
+    marginVertical: 10,
   },
 });
