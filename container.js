@@ -5,9 +5,9 @@ import { View, StyleSheet, Text } from 'react-native';
 
 class Container extends Component {
   render() {
-    const { style, ...rest } = this.props;
+    const { style, padding, ...rest } = this.props;
     return (
-      <View style={[s.container, style]} {...rest} />
+      <View style={[s.container, style, { padding: padding || 10 }]} {...rest} />
     );
   }
 }
@@ -17,6 +17,5 @@ export default Container;
 var s = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 10,
   },
 });
