@@ -5,8 +5,9 @@ import { View, StyleSheet, Text } from 'react-native';
 
 class Rows extends Component {
   render() {
+    const { style, flex, ...rest } = this.props;
     return (
-      <View style={s.container} {...this.props} />
+      <View style={[s.container, style, { flex: flex ? 1 : 0 }]} {...rest} />
     );
   }
 }

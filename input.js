@@ -23,12 +23,12 @@ export default class Inputs extends Component {
   }
 
   render() {
-    const { style, title, placeholder, ...rest } = this.props;
+    const { style, title, placeholder, material, nomargin, ...rest } = this.props;
 
     return (
       <View>
         {title ? <Text>{title}</Text> : null}
-        <TextInput style={s.input} placeholder={placeholder} />
+        <TextInput style={[s.input, { marginVertical: nomargin ? 0 : 10, borderTopWidth: material ? 0 : 1, borderRightWidth: material ? 0 : 1, borderLeftWidth: material ? 0 : 1 }]} placeholder={placeholder} />
       </View>
     );
   }
@@ -45,10 +45,9 @@ var s = StyleSheet.create({
   input: {
     height: 50,
     borderColor: 'gray',
-    borderWidth: 1,
+    borderBottomWidth: 1,
     borderRadius: 5,
     padding: 15,
-    marginVertical: 10,
     color: 'gray',
   },
 });

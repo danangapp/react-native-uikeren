@@ -6,10 +6,10 @@ import Centers from 'react-native-uikeren/centers';
 
 export default class Link extends Component {
   render() {
-    const { text, onPress } = this.props;
+    const { text, margin, color, onPress } = this.props;
     return (
-      <TouchableOpacity style={s.container} onPress={onPress}>
-        <Text>{text}</Text>
+      <TouchableOpacity style={{ marginVertical: margin ? 10 : 0 }} onPress={onPress}>
+        <Text style={{ color: color || 'gray' }}>{text}</Text>
       </TouchableOpacity>
     );
   }
@@ -17,7 +17,5 @@ export default class Link extends Component {
 
 
 var s = StyleSheet.create({
-  container: {
-    marginVertical: 10,
-  }
+
 });

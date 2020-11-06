@@ -1,6 +1,6 @@
 {
   "name": "react-native-uikeren",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "React NAtive UI Keren",
   "main": "index.js",
   "scripts": {
@@ -8,12 +8,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/danangapp/uikeren.git"
+    "url": "git+https://github.com/danangapp/react-native-uikeren.git"
   },
   "author": "danang rusmanto <danangroesmanto@gmail.com> (https://github.com/danangapp)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/danangapp/uikeren/issues"
+    "url": "https://github.com/danangapp/react-native-uikeren/issues"
   },
-  "homepage": "https://github.com/danangapp/uikeren#readme"
+  "homepage": "https://github.com/danangapp/react-native-uikeren#readme"
 }

@@ -5,9 +5,9 @@ import { View, StyleSheet, Text } from 'react-native';
 
 class Rights extends Component {
   render() {
-    const { style, ...rest } = this.props;
+    const { style, flex, ...rest } = this.props;
     return (
-      <View style={[s.container, style]} {...rest} />
+      <View style={[s.container, { flex: flex ? 1 : 0 }, style]} {...rest} />
     );
   }
 }
@@ -16,7 +16,6 @@ export default Rights;
 
 var s = StyleSheet.create({
   container: {
-    flex: 1,
     alignItems: 'flex-end',
   },
 });

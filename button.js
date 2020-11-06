@@ -6,9 +6,9 @@ import Centers from 'react-native-uikeren/centers';
 
 export default class Buttons extends Component {
   render() {
-    const { text, onPress } = this.props;
+    const { text, onPress, flex, style, ...rest } = this.props;
     return (
-      <TouchableOpacity style={s.container} onPress={onPress}>
+      <TouchableOpacity style={[s.container, { flex: flex || 0 }, style]} onPress={onPress} {...rest}>
         <Centers>
           <Text>{text}</Text>
         </Centers>
