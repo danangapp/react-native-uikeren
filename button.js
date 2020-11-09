@@ -4,15 +4,12 @@ import React, { Component } from 'react';
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import Centers from 'react-native-uikeren/centers';
 
+
 export default class Buttons extends Component {
   render() {
-    const { text, key, onPress, flex, style, ...rest } = this.props;
+    const { text, key, onPress, flex, color, style, ...rest } = this.props;
     return (
-      <TouchableOpacity key={key || null} style={[s.container, { flex: flex ? 1 : 0 }, style]} onPress={onPress} {...rest}>
-        <Centers>
-          <Text>{text}</Text>
-        </Centers>
-      </TouchableOpacity>
+      <TouchableOpacity key={key || null} style={[s.container, { flex: flex ? 1 : 0 }, style]} onPress={onPress} {...rest} />
     );
   }
 }

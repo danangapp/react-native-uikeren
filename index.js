@@ -15,10 +15,11 @@ import Check from './check';
 import Button from './button';
 import Input from './input';
 import Link from './link';
-import Swipe from './swipe';
-import VW from './viewlayout';
+import View from './viewlayout';
 import Tabs from './tabs';
 import Accordions from './accordions';
-import Swipe2 from './swipe2';
+import Swipe from './swipe';
+import Paging from './paging';
+import Loading from './loading';
 
-export { Gradient, Header, Footer, Centers, Rights, Rows, Container, Wrap, Card, Divider, List, ImageText, Check, Button, Input, Link, Swipe, VW, Tabs, Accordions, Swipe2 };
+export { Gradient, Header, Footer, Centers, Rights, Rows, Container, Wrap, Card, Divider, List, ImageText, Check, Button, Input, Link, Swipe, View, Tabs, Accordions, Paging, Loading };

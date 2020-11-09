@@ -1,8 +1,8 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable prettier/prettier */
 import React, { Component } from 'react';
-import { StyleSheet, Text, TouchableOpacity } from 'react-native';
-import View from 'react-native-uikeren/viewlayout';
+import { StyleSheet } from 'react-native';
+import { View } from 'react-native-uikeren';
 var bgc = [];
 
 export default class Tabs extends Component {
@@ -18,33 +18,29 @@ export default class Tabs extends Component {
   }
 
   renderButton() {
-    const { list } = this.props;
+    const { count, width, color, index, activecolor } = this.props;
     const { selected } = this.state;
 
-    var bs = [], b;
-    list.map((a, i) => {
-      b = (
-        <TouchableOpacity key={i} style={{ paddingVertical: 10, paddingHorizontal: 30, backgroundColor: selected == i ? 'yellow' : 'red', borderRadius: 10 }} onPress={() => { this.toActive(i) }}>
-          <View type="center">
-            <Text>{a.name}</Text>
-          </View>
-        </TouchableOpacity>
-      )
+    var bs = [], b, i = 0;
+    while (i < count) {
+      console.log(index, i);
+      b = <View key={i} type="circle" width={width || 10} style={[s.paging, { backgroundColor: index == i ? activecolor || 'black' : color || 'gray' }]}></View>
       bs[i] = b;
-    })
+      i++;
+    }
 
     return bs;
   }
 
   render() {
+    this.renderButton()
     const { selected } = this.state;
 
     return (
-      <View>
+      <View type="center">
         <View type="row">
           {this.renderButton()}
         </View>
-        <Text>{selected}</Text>
       </View>
     );
   }
@@ -52,5 +48,7 @@ export default class Tabs extends Component {
 
 
 var s = StyleSheet.create({
-
+  paging: {
+    marginRight: 5
+  }
 });

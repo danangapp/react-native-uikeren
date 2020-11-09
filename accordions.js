@@ -1,8 +1,8 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable prettier/prettier */
 import React, { Component } from 'react';
-import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
-import { Button, VW, Rows, Centers } from 'react-native-uikeren';
+import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+import View from 'react-native-uikeren/viewlayout';
 var bgc = [];
 
 export default class Accordions extends Component {
@@ -26,10 +26,10 @@ export default class Accordions extends Component {
       b = (
         <View key={i}>
           <TouchableOpacity key={i} style={{ paddingVertical: 10, paddingHorizontal: 30, backgroundColor: selected == i ? 'yellow' : 'red', borderRadius: 10 }} onPress={() => { this.toActive(i) }}>
-            <VW pos="row-between">
+            <View type="row-between">
               <Text>{a.name}</Text>
               <Text>!</Text>
-            </VW>
+            </View>
           </TouchableOpacity>
           <Text style={{ display: selected == i ? 'flex' : 'none' }}>{selected}</Text>
         </View>
