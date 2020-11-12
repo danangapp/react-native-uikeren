@@ -1,15 +1,18 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable prettier/prettier */
 import React, { Component } from 'react';
-import { StyleSheet } from 'react-native';
-import { View } from 'react-native-uikeren';
+import { StyleSheet, Animated, View } from 'react-native';
+import { View as Vw } from 'react-native-uikeren';
 var bgc = [];
 
 export default class Tabs extends Component {
   constructor(props) {
     super(props);
+    this.startValue = new Animated.Value(1);
     this.state = {
       selected: 0,
+      endValue: 2,
+      duration: 600,
     };
   }
 
@@ -23,8 +26,11 @@ export default class Tabs extends Component {
 
     var bs = [], b, i = 0;
     while (i < count) {
-      console.log(index, i);
-      b = <View key={i} type="circle" width={width || 10} style={[s.paging, { backgroundColor: index == i ? activecolor || 'black' : color || 'gray' }]}></View>
+      if (index == i) {
+        b = <Animated.View key={i} style={[s.paging, { backgroundColor: index == i ? activecolor || 'black' : color || 'gray', transform: [{ scale: this.startValue, },], }]}></Animated.View>
+      } else {
+        b = <View key={i} style={[s.paging, { backgroundColor: index == i ? activecolor || 'black' : color || 'gray', }]}></View>
+      }
       bs[i] = b;
       i++;
     }
@@ -32,16 +38,26 @@ export default class Tabs extends Component {
     return bs;
   }
 
+  callAnim() {
+    this.startValue.setValue(1);
+    Animated.timing(this.startValue, {
+      toValue: this.state.endValue,
+      duration: this.state.duration,
+      useNativeDriver: true,
+    }).start();
+  }
+
   render() {
-    this.renderButton()
+    this.renderButton();
+    this.callAnim();
     const { selected } = this.state;
 
     return (
-      <View type="center">
-        <View type="row">
+      <Vw type="col-center">
+        <Vw type="row" style={{ alignItems: 'center' }}>
           {this.renderButton()}
-        </View>
-      </View>
+        </Vw>
+      </Vw>
     );
   }
 }
@@ -49,6 +65,12 @@ export default class Tabs extends Component {
 
 var s = StyleSheet.create({
   paging: {
-    marginRight: 5
+    marginRight: 10,
+    width: 10,
+    height: 10,
+    borderRadius: 10 / 2,
+    backgroundColor: 'gray',
+    alignItems: 'center',
+    justifyContent: 'center',
   }
 });

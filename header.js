@@ -1,22 +1,23 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable prettier/prettier */
 import React, { Component } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { StyleSheet, TouchableOpacity, Text } from 'react-native';
+import { Icons, View } from 'react-native-uikeren';
 
 class Header extends Component {
   render() {
-    const { l, r, b } = this.props;
+    const { left, right, b } = this.props;
     return (
       <View style={s.container}>
-        <View>
-          {l ? <View>{l}</View> : null}
+        <TouchableOpacity style={{ marginHorizontal: 10 }} onPress={() => { alert('ok') }}>
+          <Icons name="glass" />
+        </TouchableOpacity>
+        <View style={{ alignItems: left ? 'stretch' : 'center', flex: 1 }}>
+          <Text>Danang</Text>
         </View>
-        <View style={{ flexGrow: 1 }}>
-          {b ? <View>{b}</View> : null}
-        </View>
-        <View>
-          {r ? <View>{r}</View> : null}
-        </View>
+        <TouchableOpacity style={{ marginHorizontal: 10 }}>
+          <Icons name="glass" />
+        </TouchableOpacity>
       </View>
     );
   }
@@ -29,5 +30,7 @@ var s = StyleSheet.create({
     flexDirection: 'row',
     height: 50,
     backgroundColor: 'yellow',
+    justifyContent: 'center',
+    alignItems: 'center'
   },
 });
