@@ -23,36 +23,35 @@ export default class Icon extends Component {
     renderIcon() {
         var icons;
         const { icon, name, size, color, style, ...rest } = this.props;
-        if (icon) {
-            if (icon == "AntDesign") {
-                icons = <AntDesign name={name} size={size || 25} color={color} style={style}  {...rest} />
-            } else if (icon == "Entypo") {
-                icons = <Entypo name={name} size={size || 25} color={color} style={style}  {...rest} />
-            } else if (icon == "EvilIcons") {
-                icons = <EvilIcons name={name} size={size || 25} color={color} style={style}  {...rest} />
-            } else if (icon == "Feather") {
-                icons = <Feather name={name} size={size || 25} color={color} style={style}  {...rest} />
-            } else if (icon == "FontAwesome") {
-                icons = <FontAwesome name={name} size={size || 25} color={color} style={style}  {...rest} />
-            } else if (icon == "FontAwesome5") {
-                icons = <FontAwesome5 name={name} size={size || 25} color={color} style={style}  {...rest} />
-            } else if (icon == "Fontisto") {
-                icons = <Fontisto name={name} size={size || 25} color={color} style={style}  {...rest} />
-            } else if (icon == "Foundation") {
-                icons = <Foundation name={name} size={size || 25} color={color} style={style}  {...rest} />
-            } else if (icon == "Ionicons") {
-                icons = <Ionicons name={name} size={size || 25} color={color} style={style}  {...rest} />
-            } else if (icon == "MaterialCommunityIcons") {
-                icons = <MaterialCommunityIcons name={name} size={size || 25} color={color} style={style}  {...rest} />
-            } else if (icon == "MaterialIcons") {
-                icons = <MaterialIcons name={name} size={size || 25} color={color} style={style}  {...rest} />
-            } else if (icon == "Octicons") {
-                icons = <Octicons name={name} size={size || 25} color={color} style={style}  {...rest} />
-            } else if (icon == "SimpleLineIcons") {
-                icons = <SimpleLineIcons name={name} size={size || 25} color={color} style={style}  {...rest} />
-            } else if (icon == "Zocial") {
-                icons = <Zocial name={name} size={size || 25} color={color} style={style}  {...rest} />
-            }
+        const { AntDesigns, Entypos, EvilIconss, Feathers, FontAwesomes, FontAwesome5s, Fontistos, Foundations, Ioniconss, MaterialCommunityIconss, MaterialIconss, Octiconss, SimpleLineIconss, Zocials } = this.props;
+        if (AntDesigns) {
+            icons = <AntDesign name={name} size={size || 25} color={color} style={style}  {...rest} />
+        } else if (Entypos) {
+            icons = <Entypo name={name} size={size || 25} color={color} style={style}  {...rest} />
+        } else if (EvilIconss) {
+            icons = <EvilIcons name={name} size={size || 25} color={color} style={style}  {...rest} />
+        } else if (Feathers) {
+            icons = <Feather name={name} size={size || 25} color={color} style={style}  {...rest} />
+        } else if (FontAwesomes) {
+            icons = <FontAwesome name={name} size={size || 25} color={color} style={style}  {...rest} />
+        } else if (FontAwesome5s) {
+            icons = <FontAwesome5 name={name} size={size || 25} color={color} style={style}  {...rest} />
+        } else if (Fontistos) {
+            icons = <Fontisto name={name} size={size || 25} color={color} style={style}  {...rest} />
+        } else if (Foundations) {
+            icons = <Foundation name={name} size={size || 25} color={color} style={style}  {...rest} />
+        } else if (Ioniconss) {
+            icons = <Ionicons name={name} size={size || 25} color={color} style={style}  {...rest} />
+        } else if (MaterialCommunityIconss) {
+            icons = <MaterialCommunityIcons name={name} size={size || 25} color={color} style={style}  {...rest} />
+        } else if (MaterialIconss) {
+            icons = <MaterialIcons name={name} size={size || 25} color={color} style={style}  {...rest} />
+        } else if (Octiconss) {
+            icons = <Octicons name={name} size={size || 25} color={color} style={style}  {...rest} />
+        } else if (SimpleLineIconss) {
+            icons = <SimpleLineIcons name={name} size={size || 25} color={color} style={style}  {...rest} />
+        } else if (Zocials) {
+            icons = <Zocial name={name} size={size || 25} color={color} style={style}  {...rest} />
         } else {
             icons = <FontAwesome name={name} size={size || 25} color={color} style={style}  {...rest} />
         }

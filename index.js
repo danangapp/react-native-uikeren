@@ -15,7 +15,7 @@ import Check from './check';
 import Button from './button';
 import Input from './input';
 import Link from './link';
-import View from './viewlayout';
+import Vw from './viewlayout';
 import Tabs from './tabs';
 import Accordions from './accordions';
 import Swipe from './swipe';
@@ -23,4 +23,4 @@ import Paging from './paging';
 import Loading from './loading';
 import Icons from './icon';
 
-export { Gradient, Header, Footer, Centers, Rights, Rows, Container, Wrap, Card, Divider, List, ImageText, Check, Button, Input, Link, Swipe, View, Tabs, Accordions, Paging, Loading, Icons };
+export { Gradient, Header, Footer, Centers, Rights, Rows, Container, Wrap, Card, Divider, List, ImageText, Check, Button, Input, Link, Swipe, Vw, Tabs, Accordions, Paging, Loading, Icons };
