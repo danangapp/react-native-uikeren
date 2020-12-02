@@ -19,6 +19,8 @@ export default class ViewLayout extends Component {
     var st = { margin, padding, marginLeft, marginRight, marginTop, marginBottom, paddingLeft, paddingRight, paddingTop, paddingBottom, width, height, backgroundColor };
 
     defaults = <View style={[st, style]} {...rest} />;
+    positions = defaults;
+
     if (TopLeft) {
       positions = <View style={[st, { flex: 1, justifyContent: 'flex-start' }, style]} {...rest} />;
     } else if (TopCenter) {
@@ -72,9 +74,7 @@ export default class ViewLayout extends Component {
     } else if (Divider) {
       positions = <View style={[st, { width: '100%', height: 0.5, marginVertical: 10, backgroundColor: color || 'black' }, style]} {...rest} />;
     } else if (Container) {
-      positions = <SafeAreaView style={[st, { padding: 10 }, style]} {...rest} />;
-    } else {
-      positions = defaults;
+      positions = <View style={[st, { padding: 10 }, style]} {...rest} />;
     }
 
     return positions;

@@ -22,5 +22,7 @@ import Swipe from './swipe';
 import Paging from './paging';
 import Loading from './loading';
 import Icons from './icon';
+import Texts from './text';
+import Collection from './collection';
 
-export { Gradient, Header, Footer, Centers, Rights, Rows, Container, Wrap, Card, Divider, List, ImageText, Check, Button, Input, Link, Swipe, Vw, Tabs, Accordions, Paging, Loading, Icons };
+export { Gradient, Header, Footer, Centers, Rights, Rows, Container, Wrap, Card, Divider, List, ImageText, Check, Button, Input, Link, Swipe, Vw, Tabs, Accordions, Paging, Loading, Icons, Texts, Collection };

@@ -1,36 +1,41 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable prettier/prettier */
 import React, { Component } from 'react';
-import { StyleSheet, TouchableOpacity, Text } from 'react-native';
-import { Icons, View } from 'react-native-uikeren';
+import { Text } from 'react-native';
+import Vw from './viewlayout';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import Collection from './collection';
 
 class Header extends Component {
   render() {
-    const { left, right, b } = this.props;
+    const { left, right, body, bodycenter, backgroundColor, style, color } = this.props;
+    var vw, lefts, rights, bodys;
+
+    if (left) {
+      lefts = typeof left === 'string' ? <Text style={{ marginRight: 20, color: color || Collection.color1 }}>{left}</Text> : left;
+    }
+
+    if (right) {
+      rights = typeof right === 'string' ? <Text style={{ marginLeft: 20, color: color || Collection.color1 }}>{right}</Text> : right;
+    }
+
+    if (body || bodycenter) {
+      bodys = typeof (body === 'string' || bodycenter === 'string') ? <Text style={{ flex: 1, color: color || Collection.color1, textAlign: bodycenter ? 'center' : 'left' }}>{body || bodycenter}</Text> : (body || bodycenter);
+    }
+
+    vw = <Vw Row>
+      {lefts}
+      {bodys}
+      {rights}
+    </Vw>;
+
     return (
-      <View style={s.container}>
-        <TouchableOpacity style={{ marginHorizontal: 10 }} onPress={() => { alert('ok') }}>
-          <Icons name="glass" />
-        </TouchableOpacity>
-        <View style={{ alignItems: left ? 'stretch' : 'center', flex: 1 }}>
-          <Text>Danang</Text>
-        </View>
-        <TouchableOpacity style={{ marginHorizontal: 10 }}>
-          <Icons name="glass" />
-        </TouchableOpacity>
-      </View>
+      <Vw style={[{ paddingHorizontal: 10, paddingVertical: 15, backgroundColor: backgroundColor || Collection.bgcolor1 }, style]}>
+        {vw}
+      </Vw>
     );
   }
 }
 
 export default Header;
-
-var s = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    height: 50,
-    backgroundColor: 'yellow',
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-});
