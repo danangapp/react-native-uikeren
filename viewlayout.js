@@ -3,20 +3,20 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable prettier/prettier */
 import React, { Component } from 'react';
-import { View, StyleSheet, Text, SafeAreaView } from 'react-native';
+import { View, StyleSheet, Text, SafeAreaView, TouchableOpacity } from 'react-native';
 
 export default class ViewLayout extends Component {
   render() {
     const { style, padding, margin, type, width, height, flex, color, ...rest } = this.props;
-    const { TopLeft, TopCenter, TopRight, CenterLeft, CenterCenter, CenterRight,
+    const { SAV, TopLeft, TopCenter, TopRight, CenterLeft, CenterCenter, CenterRight,
       BottomLeft, BottomCenter, BottomRight, ColAround, ColBetween,
       RowAround, RowBetween, Center, Right, Wrap, WrapCenter, Absolute,
       AbsoluteCenter, AbsoluteLoading, Row, Circle, Oval,
-      Box, Flex, Divider, Container } = this.props;
-    var positions, defaults, x = width || 100;
+      Box, Flex, Divider, CircleAbsolute, Container, size } = this.props;
+    var positions, defaults, x = width || 50;
 
     const { marginLeft, marginRight, marginTop, marginBottom, paddingLeft, paddingRight, paddingTop, paddingBottom, backgroundColor } = this.props;
-    var st = { margin, padding, marginLeft, marginRight, marginTop, marginBottom, paddingLeft, paddingRight, paddingTop, paddingBottom, width, height, backgroundColor };
+    var st = { margin, padding, marginLeft, marginRight, marginTop, marginBottom, paddingLeft, paddingRight, paddingTop, paddingBottom, width, height, backgroundColor, size };
 
     defaults = <View style={[st, style]} {...rest} />;
     positions = defaults;
@@ -65,12 +65,16 @@ export default class ViewLayout extends Component {
       positions = <View style={[st, { flexDirection: 'row' }, style]} {...rest} />;
     } else if (Circle) {
       positions = <View style={[st, { width: x, height: x, borderRadius: x / 2, backgroundColor: color || 'gray', alignItems: 'center', justifyContent: 'center' }, style]} {...rest} />;
+    } else if (CircleAbsolute) {
+      positions = <TouchableOpacity style={[st, { zIndex: 1, position: 'absolute', width: x, height: x, borderRadius: x / 2, backgroundColor: color || 'gray', alignItems: 'center', justifyContent: 'center' }, style]} {...rest} />;
     } else if (Oval) {
       positions = <View style={[st, { width: x, height: x, borderRadius: x / 8, backgroundColor: color || 'gray', alignItems: 'center', justifyContent: 'center' }, style]} {...rest} />;
     } else if (Box) {
       positions = <View style={[st, { width: x, height: x, backgroundColor: color || 'gray', alignItems: 'center', justifyContent: 'center' }, style]} {...rest} />;
     } else if (Flex) {
-      positions = <View style={[st, { flex: flex }, style]} {...rest} />;
+      positions = <View style={[st, { flex: 1 }, style]} {...rest} />;
+    } else if (SAV) {
+      positions = <SafeAreaView style={[st, { flex: flex }, style]} {...rest} />;
     } else if (Divider) {
       positions = <View style={[st, { width: '100%', height: 0.5, marginVertical: 10, backgroundColor: color || 'black' }, style]} {...rest} />;
     } else if (Container) {

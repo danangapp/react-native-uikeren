@@ -1,7 +1,9 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable prettier/prettier */
 import React, { Component } from 'react';
-import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, TouchableOpacity } from 'react-native';
+import Vw from './viewlayout';
+import Text from './text';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Entypo from 'react-native-vector-icons/Entypo';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
@@ -23,7 +25,7 @@ export default class Icon extends Component {
 
     renderIcon() {
         var icons;
-        const { icon, name, size, color, style, ...rest } = this.props;
+        const { icon, name, size, color, texttop, textbottom, textleft, textright, style, ...rest } = this.props;
         const { AntDesigns, Entypos, EvilIconss, Feathers, FontAwesomes, FontAwesome5s, Fontistos, Foundations, Ioniconss, MaterialCommunityIconss, MaterialIconss, Octiconss, SimpleLineIconss, Zocials } = this.props;
 
         icons = <FontAwesome name={name} size={size || 20} color={color || Collection.color1} style={style}  {...rest} />;
@@ -56,6 +58,33 @@ export default class Icon extends Component {
             icons = <SimpleLineIcons name={name} size={size || 20} color={color || Collection.color1} style={style}  {...rest} />;
         } else if (Zocials) {
             icons = <Zocial name={name} size={size || 20} color={color || Collection.color1} style={style}  {...rest} />;
+        }
+
+        if (textbottom) {
+            icons =
+                <Vw Center>
+                    {icons}
+                    <Text textAlign="center" marginTop={10}>{textbottom}</Text>
+                </Vw>
+        } else if (texttop) {
+            icons =
+                <Vw Center>
+                    <Text textAlign="center" marginBottom={10}>{texttop}</Text>
+                    {icons}
+                </Vw>
+        } else if (textleft) {
+            icons =
+                <Vw RowCenter>
+                    <Text marginRight={10}>{textleft}</Text>
+                    {icons}
+                </Vw>
+        }
+        if (textright) {
+            icons =
+                <Vw RowCenter>
+                    {icons}
+                    <Text textAlign="center" marginLeft={10}>{textright}</Text>
+                </Vw>
         }
 
         return icons;

@@ -2,7 +2,7 @@
 /* eslint-disable prettier/prettier */
 import React, { Component } from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
-import View from 'react-native-uikeren/viewlayout';
+import Vw from './viewlayout';
 var bgc = [];
 
 export default class Tabs extends Component {
@@ -23,11 +23,12 @@ export default class Tabs extends Component {
 
     var bs = [], b;
     list.map((a, i) => {
+      console.log(a)
       b = (
         <TouchableOpacity key={i} style={{ paddingVertical: 10, paddingHorizontal: 30, backgroundColor: selected == i ? 'yellow' : 'red', borderRadius: 10 }} onPress={() => { this.toActive(i) }}>
-          <View type="center">
+          <Vw Center>
             <Text>{a.name}</Text>
-          </View>
+          </Vw>
         </TouchableOpacity>
       )
       bs[i] = b;
@@ -40,12 +41,12 @@ export default class Tabs extends Component {
     const { selected } = this.state;
 
     return (
-      <View>
-        <View type="row">
+      <Vw>
+        <Vw Row>
           {this.renderButton()}
-        </View>
+        </Vw>
         <Text>{selected}</Text>
-      </View>
+      </Vw>
     );
   }
 }
