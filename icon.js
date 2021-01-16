@@ -25,7 +25,7 @@ export default class Icon extends Component {
 
     renderIcon() {
         var icons;
-        const { icon, name, size, color, texttop, textbottom, textleft, textright, style, ...rest } = this.props;
+        const { icon, name, size, color, texttop, textbottom, textleft, textright, onPress, style, ...rest } = this.props;
         const { AntDesigns, Entypos, EvilIconss, Feathers, FontAwesomes, FontAwesome5s, Fontistos, Foundations, Ioniconss, MaterialCommunityIconss, MaterialIconss, Octiconss, SimpleLineIconss, Zocials } = this.props;
 
         icons = <FontAwesome name={name} size={size || 20} color={color || Collection.color1} style={style}  {...rest} />;
@@ -60,31 +60,39 @@ export default class Icon extends Component {
             icons = <Zocial name={name} size={size || 20} color={color || Collection.color1} style={style}  {...rest} />;
         }
 
+
         if (textbottom) {
             icons =
-                <Vw Center>
+                <Vw style={{ alignSelf: 'flex-start', alignItems: 'center' }}>
                     {icons}
-                    <Text textAlign="center" marginTop={10}>{textbottom}</Text>
+                    <Text marginTop={10}>{textbottom}</Text>
                 </Vw>
         } else if (texttop) {
             icons =
-                <Vw Center>
-                    <Text textAlign="center" marginBottom={10}>{texttop}</Text>
+                <Vw style={{ alignSelf: 'flex-start', alignItems: 'center' }}>
+                    <Text marginBottom={10}>{texttop}</Text>
                     {icons}
                 </Vw>
         } else if (textleft) {
             icons =
-                <Vw RowCenter>
+                <Vw Row style={{ alignSelf: 'flex-start', alignItems: 'center' }}>
                     <Text marginRight={10}>{textleft}</Text>
                     {icons}
                 </Vw>
         }
         if (textright) {
             icons =
-                <Vw RowCenter>
+                <Vw Row style={{ alignSelf: 'flex-start', alignItems: 'center' }}>
                     {icons}
                     <Text textAlign="center" marginLeft={10}>{textright}</Text>
                 </Vw>
+        }
+
+        if (onPress) {
+            icons =
+                <TouchableOpacity onPress={onPress}>
+                    {icons}
+                </TouchableOpacity>
         }
 
         return icons;

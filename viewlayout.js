@@ -3,83 +3,145 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable prettier/prettier */
 import React, { Component } from 'react';
-import { View, StyleSheet, Text, SafeAreaView, TouchableOpacity } from 'react-native';
+import { View, SafeAreaView, TouchableOpacity } from 'react-native';
 
 export default class ViewLayout extends Component {
   render() {
     const { style, padding, margin, type, width, height, flex, color, ...rest } = this.props;
     const { SAV, TopLeft, TopCenter, TopRight, CenterLeft, CenterCenter, CenterRight,
       BottomLeft, BottomCenter, BottomRight, ColAround, ColBetween,
-      RowAround, RowBetween, Center, Right, Wrap, WrapCenter, Absolute,
-      AbsoluteCenter, AbsoluteLoading, Row, Circle, Oval,
-      Box, Flex, Divider, CircleAbsolute, Container, size } = this.props;
-    var positions, defaults, x = width || 50;
+      RowAround, RowBetween, Center, Right, Wrap, WrapCenter, WrapRight, Absolute,
+      AbsoluteCenter, AbsoluteRight, Row, Circle, Oval,
+      Box, Flex, Divider, Container, size, onPress } = this.props;
 
-    const { marginLeft, marginRight, marginTop, marginBottom, paddingLeft, paddingRight, paddingTop, paddingBottom, backgroundColor } = this.props;
     var st = { margin, padding, marginLeft, marginRight, marginTop, marginBottom, paddingLeft, paddingRight, paddingTop, paddingBottom, width, height, backgroundColor, size };
+    const { marginLeft, marginRight, marginTop, marginBottom, paddingLeft, paddingRight, paddingTop, paddingBottom, backgroundColor } = this.props;
+    var positions, x = size || 50, styles, tops, centers, bottoms;
 
-    defaults = <View style={[st, style]} {...rest} />;
-    positions = defaults;
 
-    if (TopLeft) {
-      positions = <View style={[st, { flex: 1, justifyContent: 'flex-start' }, style]} {...rest} />;
-    } else if (TopCenter) {
-      positions = <View style={[st, { flex: 1, justifyContent: 'flex-start', alignItems: 'center' }, style]} {...rest} />;
-    } else if (TopRight) {
-      positions = <View style={[st, { flex: 1, justifyContent: 'flex-start', alignItems: 'flex-end' }, style]} {...rest} />;
-    } else if (CenterLeft) {
-      positions = <View style={[st, { flex: 1, justifyContent: 'center' }, style]} {...rest} />;
-    } else if (CenterCenter) {
-      positions = <View style={[st, { flex: 1, justifyContent: 'center', alignItems: 'center', flex: 1 }, style]} {...rest} />;
-    } else if (CenterRight) {
-      positions = <View style={[st, { flex: 1, justifyContent: 'center', alignItems: 'flex-end', flex: 1 }, style]} {...rest} />;
-    } else if (BottomLeft) {
-      positions = <View style={[st, { flex: 1, justifyContent: 'flex-end' }, style]} {...rest} />;
-    } else if (BottomCenter) {
-      positions = <View style={[st, { flex: 1, justifyContent: 'flex-end', alignItems: 'center' }, style]} {...rest} />;
-    } else if (BottomRight) {
-      positions = <View style={[st, { flex: 1, justifyContent: 'flex-end', alignItems: 'flex-end' }, style]} {...rest} />;
-    } else if (ColAround) {
-      positions = <View style={[st, { flex: 1, justifyContent: 'space-around' }, style]} {...rest} />;
-    } else if (ColBetween) {
-      positions = <View style={[st, { flex: 1, justifyContent: 'space-between' }, style]} {...rest} />;
-    } else if (RowAround) {
-      positions = <View style={[st, { justifyContent: 'space-around', flexDirection: 'row' }, style]} {...rest} />;
-    } else if (RowBetween) {
-      positions = <View style={[st, { justifyContent: 'space-between', flexDirection: 'row' }, style]} {...rest} />;
-    } else if (Center) {
-      positions = <View style={[st, { alignItems: 'center' }, style]} {...rest} />;
-    } else if (Right) {
-      positions = <View style={[st, { alignItems: 'flex-end' }, style]} {...rest} />;
-    } else if (Wrap) {
-      positions = <View style={[st, { flexWrap: 'wrap', flexDirection: 'row' }, style]} {...rest} />;
-    } else if (WrapCenter) {
-      positions = <View style={[st, { alignItems: 'center', justifyContent: 'center', flexDirection: 'row', flexWrap: 'wrap' }, style]} {...rest} />;
-    } else if (Absolute) {
-      positions = <View style={[st, { position: 'absolute' }, style]} {...rest} />;
-    } else if (AbsoluteCenter) {
-      positions = <View style={[st, { position: 'absolute', alignSelf: 'center' }, style]} {...rest} />;
-    } else if (AbsoluteLoading) {
-      positions = <View style={[st, { position: 'absolute', left: 0, right: 0, top: 0, bottom: 0 }, style]} {...rest} />;
-    } else if (Row) {
-      positions = <View style={[st, { flexDirection: 'row' }, style]} {...rest} />;
-    } else if (Circle) {
-      positions = <View style={[st, { width: x, height: x, borderRadius: x / 2, backgroundColor: color || 'gray', alignItems: 'center', justifyContent: 'center' }, style]} {...rest} />;
-    } else if (CircleAbsolute) {
-      positions = <TouchableOpacity style={[st, { zIndex: 1, position: 'absolute', width: x, height: x, borderRadius: x / 2, backgroundColor: color || 'gray', alignItems: 'center', justifyContent: 'center' }, style]} {...rest} />;
-    } else if (Oval) {
-      positions = <View style={[st, { width: x, height: x, borderRadius: x / 8, backgroundColor: color || 'gray', alignItems: 'center', justifyContent: 'center' }, style]} {...rest} />;
-    } else if (Box) {
-      positions = <View style={[st, { width: x, height: x, backgroundColor: color || 'gray', alignItems: 'center', justifyContent: 'center' }, style]} {...rest} />;
-    } else if (Flex) {
-      positions = <View style={[st, { flex: 1 }, style]} {...rest} />;
-    } else if (SAV) {
-      positions = <SafeAreaView style={[st, { flex: flex }, style]} {...rest} />;
-    } else if (Divider) {
-      positions = <View style={[st, { width: '100%', height: 0.5, marginVertical: 10, backgroundColor: color || 'black' }, style]} {...rest} />;
-    } else if (Container) {
-      positions = <View style={[st, { padding: 10 }, style]} {...rest} />;
+    if (Absolute) {
+      styles = { ...st, position: 'absolute' }
     }
+
+    if (AbsoluteCenter) {
+      styles = { ...st, position: 'absolute', alignSelf: 'center' }
+    }
+
+    if (AbsoluteRight) {
+      styles = { ...st, position: 'absolute', alignSelf: 'flex-end' }
+    }
+
+    if (Circle) {
+      styles = { ...st, width: x, height: x, borderRadius: x / 2, backgroundColor: color || 'gray', alignItems: 'center', justifyContent: 'center' }
+    }
+
+    if (Oval) {
+      styles = { ...st, width: x, height: x, borderRadius: x / 8, backgroundColor: color || 'gray', alignItems: 'center', justifyContent: 'center' }
+    }
+
+    if (Box) {
+      styles = { ...st, width: x, height: x, backgroundColor: color || 'gray', alignItems: 'center', justifyContent: 'center' }
+    }
+
+    if (Flex) {
+      styles = { ...st, flex: 1 }
+    }
+
+    if (Container) {
+      styles = { ...st, padding: 10 }
+    }
+
+    tops = { flex: 1, justifyContent: 'flex-start' }
+    if (TopLeft) {
+      styles = { ...st, ...tops, alignItems: 'flex-start', ...style }
+    }
+
+    if (TopCenter) {
+      styles = { ...st, ...tops, alignItems: 'center', ...style }
+    }
+
+    if (TopRight) {
+      styles = { ...st, ...tops, alignItems: 'flex-end', ...style }
+    }
+
+    centers = { flex: 1, justifyContent: 'center' }
+    if (CenterLeft) {
+      styles = { ...st, ...centers, ...style }
+    }
+
+    if (CenterCenter) {
+      styles = { ...st, ...centers, alignItems: 'center', ...style }
+    }
+
+    if (CenterRight) {
+      styles = { ...st, ...centers, alignItems: 'flex-end', ...style }
+    }
+
+    bottoms = { flex: 1, justifyContent: 'flex-end' }
+    if (BottomLeft) {
+      styles = { ...st, ...bottoms, ...style }
+    }
+
+    if (BottomCenter) {
+      styles = { ...st, ...bottoms, alignItems: 'center', ...style }
+    }
+
+    if (BottomRight) {
+      styles = { ...st, ...bottoms, alignItems: 'flex-end', ...style }
+    }
+
+    if (ColAround) {
+      styles = { ...st, flex: 1, justifyContent: 'space-around', ...style }
+    }
+
+    if (ColBetween) {
+      styles = { ...st, flex: 1, justifyContent: 'space-between', ...style }
+    }
+
+    if (RowAround) {
+      styles = { ...st, justifyContent: 'space-around', flexDirection: 'row', ...style }
+    }
+
+    if (RowBetween) {
+      styles = { ...st, justifyContent: 'space-between', flexDirection: 'row', ...style }
+    }
+
+    if (Center) {
+      styles = { ...st, alignItems: 'center', ...style }
+    }
+
+    if (Right) {
+      styles = { ...st, alignItems: 'flex-end', ...style }
+    }
+
+    if (Wrap) {
+      styles = { ...st, flexWrap: 'wrap', flexDirection: 'row', ...style }
+    }
+
+    if (WrapCenter) {
+      styles = { ...st, alignItems: 'center', justifyContent: 'center', flexDirection: 'row', flexWrap: 'wrap', ...style }
+    }
+
+    if (WrapRight) {
+      styles = { ...st, alignItems: 'flex-end', justifyContent: 'flex-end', flexDirection: 'row', flexWrap: 'wrap', ...style }
+    }
+
+    if (Row) {
+      styles = { ...st, flexDirection: 'row', ...style }
+    }
+
+    if (Divider) {
+      styles = { ...st, width: '100%', height: 0.5, marginVertical: 10, backgroundColor: color || 'black', ...style }
+    }
+
+    if (SAV) {
+      positions = <SafeAreaView style={styles} {...rest} />;
+    } else if (onPress) {
+      positions = <TouchableOpacity style={styles} {...rest} />;
+    } else {
+      positions = <View style={styles} {...rest} />;
+    }
+
 
     return positions;
   }
