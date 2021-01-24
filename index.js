@@ -22,8 +22,10 @@ import Swipe from './swipe';
 import Paging from './paging';
 import Loading from './loading';
 import Icons from './icon';
-import Texts from './text';
+import Text from './text';
 import Fab from './fab';
+import Image from './image';
+import Toggle from './toggle';
 import Collection from './collection';
 
-export { Gradient, Header, Footer, Centers, Rights, Rows, Container, Wrap, Card, Divider, List, ImageText, Check, Button, Input, Link, Swipe, Vw, Tabs, Accordions, Paging, Loading, Icons, Texts, Fab, Collection };
+export { Gradient, Header, Footer, Centers, Rights, Rows, Container, Wrap, Card, Divider, List, ImageText, Check, Button, Input, Link, Swipe, Vw, Tabs, Accordions, Paging, Loading, Icons, Text, Fab, Collection, Image, Toggle };

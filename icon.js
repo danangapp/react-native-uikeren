@@ -1,3 +1,4 @@
+/* eslint-disable no-sequences */
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable prettier/prettier */
 import React, { Component } from 'react';
@@ -12,7 +13,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import Foundation from 'react-native-vector-icons/Foundation';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import Ioniconss from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Octicons from 'react-native-vector-icons/Octicons';
@@ -25,10 +26,12 @@ export default class Icon extends Component {
 
     renderIcon() {
         var icons;
-        const { icon, name, size, color, texttop, textbottom, textleft, textright, onPress, style, ...rest } = this.props;
-        const { AntDesigns, Entypos, EvilIconss, Feathers, FontAwesomes, FontAwesome5s, Fontistos, Foundations, Ioniconss, MaterialCommunityIconss, MaterialIconss, Octiconss, SimpleLineIconss, Zocials } = this.props;
+        const { icon, name, size, color, texttop, textbottom, textleft, textright, Circle, onPress, style, ...rest } = this.props;
+        const { AntDesigns, Entypos, EvilIconss, Feathers, FontAwesomes, FontAwesome5s, Fontistos, Foundations, Ionicons, MaterialCommunityIconss, MaterialIconss, Octiconss, SimpleLineIconss, Zocials } = this.props;
+        const { margin, padding, marginLeft, marginRight, marginTop, marginBottom, paddingLeft, paddingRight, paddingTop, paddingBottom, width, height, backgroundColor } = this.props;
+        var st = { margin, padding, marginLeft, marginRight, marginTop, marginBottom, paddingLeft, paddingRight, paddingTop, paddingBottom, width, height, backgroundColor, size };
 
-        icons = <FontAwesome name={name} size={size || 20} color={color || Collection.color1} style={style}  {...rest} />;
+        icons = <Ioniconss name={name} size={size || 20} color={color || Collection.color1} style={style}  {...rest} />;
 
         if (AntDesigns) {
             icons = <AntDesign name={name} size={size || 20} color={color || Collection.color1} style={style}  {...rest} />;
@@ -46,8 +49,8 @@ export default class Icon extends Component {
             icons = <Fontisto name={name} size={size || 20} color={color || Collection.color1} style={style}  {...rest} />;
         } else if (Foundations) {
             icons = <Foundation name={name} size={size || 20} color={color || Collection.color1} style={style}  {...rest} />;
-        } else if (Ioniconss) {
-            icons = <Ionicons name={name} size={size || 20} color={color || Collection.color1} style={style}  {...rest} />;
+        } else if (Ionicons) {
+            icons = <Ioniconss name={name} size={size || 20} color={color || Collection.color1} style={style}  {...rest} />;
         } else if (MaterialCommunityIconss) {
             icons = <MaterialCommunityIcons name={name} size={size || 20} color={color || Collection.color1} style={style}  {...rest} />;
         } else if (MaterialIconss) {
@@ -64,36 +67,52 @@ export default class Icon extends Component {
         if (textbottom) {
             icons =
                 <Vw style={{ alignSelf: 'flex-start', alignItems: 'center' }}>
-                    {icons}
-                    <Text marginTop={10}>{textbottom}</Text>
-                </Vw>
+                    <Vw Center>
+                        {icons}
+                    </Vw>
+                    <Text marginTop={5} color={color || Collection.color1}>{textbottom}</Text>
+                </Vw>;
         } else if (texttop) {
             icons =
                 <Vw style={{ alignSelf: 'flex-start', alignItems: 'center' }}>
-                    <Text marginBottom={10}>{texttop}</Text>
-                    {icons}
-                </Vw>
+                    <Text marginBottom={5} color={color || Collection.color1}>{texttop}</Text>
+                    <Vw Center>
+                        {icons}
+                    </Vw>
+                </Vw>;
         } else if (textleft) {
             icons =
                 <Vw Row style={{ alignSelf: 'flex-start', alignItems: 'center' }}>
-                    <Text marginRight={10}>{textleft}</Text>
+                    <Text marginRight={5} color={color || Collection.color1}>{textleft}</Text>
                     {icons}
-                </Vw>
+                </Vw>;
         }
         if (textright) {
             icons =
                 <Vw Row style={{ alignSelf: 'flex-start', alignItems: 'center' }}>
                     {icons}
-                    <Text textAlign="center" marginLeft={10}>{textright}</Text>
-                </Vw>
+                    <Text textAlign="center" marginLeft={5} color={color || Collection.color1}>{textright}</Text>
+                </Vw>;
+        }
+
+        if (Circle) {
+            icons =
+                <Vw style={style, st}>
+                    <Vw Circle size={size + 15}>
+                        {icons}
+                    </Vw>
+                </Vw>;
         }
 
         if (onPress) {
             icons =
                 <TouchableOpacity onPress={onPress}>
                     {icons}
-                </TouchableOpacity>
+                </TouchableOpacity>;
         }
+
+
+
 
         return icons;
     }
